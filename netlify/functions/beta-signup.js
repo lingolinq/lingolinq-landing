@@ -7,14 +7,17 @@
 //      so info@lingolinq.com gets a copy independent of HubSpot.
 //
 // Required env vars (set in Netlify dashboard):
-//   HUBSPOT_PORTAL_ID      — numeric portal id
-//   HUBSPOT_FORM_GUID      — uuid of the Beta Waitlist form in HubSpot
-//   RESEND_API_KEY         — re_... key from resend.com
-//   FORWARDER_FROM_EMAIL   — verified sender, e.g. beta@lingolinq.com
-//   FORWARDER_TO_EMAIL     — info@lingolinq.com
+//   HUBSPOT_PORTAL_ID            numeric portal id
+//   HUBSPOT_FORM_GUID            uuid of the Beta Waitlist form in HubSpot
+//   HUBSPOT_SUBSCRIPTION_TYPE_ID id of the marketing subscription in HubSpot
+//   RESEND_API_KEY               re_... key from resend.com
+//   FORWARDER_FROM_EMAIL         verified sender, e.g. beta@lingolinq.com
+//   FORWARDER_TO_EMAIL           info@lingolinq.com
 //
 // HubSpot success is the source of truth. If the backup email fails we
 // still return 200 to the browser. If HubSpot fails we return 502.
+
+const crypto = require('node:crypto');
 
 const HUBSPOT_FIELD_MAP = {
   email: 'email',
@@ -34,11 +37,45 @@ const ALLOWED_ROLES = new Set([
   'other'
 ]);
 
+// Server-controlled canonical consent text. Do not trust the client copy.
+const CONSENT_TEXT_CANONICAL =
+  'I am 18 or older. I agree to LingoLinq processing my information and sending me waitlist updates. I can withdraw at any time.';
+const SUBSCRIPTION_PURPOSE_TEXT =
+  'Marketing communications about the LingoLinq beta program.';
+
 const isValidEmail = (s) =>
   typeof s === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s) && s.length <= 254;
 
 const truncate = (value, max) =>
   typeof value === 'string' ? value.slice(0, max) : '';
+
+// Strip CRLF, tab, and angle brackets. Used for single-line fields that
+// flow into email subjects or User-Agent headers.
+const sanitizeLine = (s) => {
+  const stripped = String(s)
+    .split('').filter((ch) => {
+      const c = ch.charCodeAt(0);
+      if (c === 0x0A || c === 0x0D || c === 0x09) return false;
+      if (c === 0x3C || c === 0x3E) return false;
+      return true;
+    }).join('');
+  return stripped.slice(0, 400);
+};
+
+// Strip angle brackets only. Used for multi-line content like comments.
+const sanitizeBody = (s) => {
+  const stripped = String(s)
+    .split('').filter((ch) => {
+      const c = ch.charCodeAt(0);
+      return c !== 0x3C && c !== 0x3E;
+    }).join('');
+  return stripped.slice(0, 2000);
+};
+
+// Hash a value for redacted log output. Lets us correlate failures without
+// writing the original PII to logs that LingoLinq team members can read.
+const fingerprint = (s) =>
+  s ? crypto.createHash('sha256').update(String(s)).digest('hex').slice(0, 10) : '-';
 
 const json = (statusCode, body) => ({
   statusCode,
@@ -51,6 +88,8 @@ exports.handler = async (event) => {
     return json(405, { error: 'Method not allowed.' });
   }
 
+  const headers = event.headers || {};
+
   let payload;
   try {
     payload = JSON.parse(event.body || '{}');
@@ -58,9 +97,11 @@ exports.handler = async (event) => {
     return json(400, { error: 'Invalid JSON.' });
   }
 
-  // Honeypot — if 'website' is filled, silently accept and drop.
+  // Honeypot. Silent accept; do not tell bots they were caught.
   if (payload.website) {
-    console.log('[beta-signup] honeypot tripped');
+    console.log('[beta-signup] honeypot tripped', {
+      ipFp: fingerprint((headers['x-forwarded-for'] || '').split(',')[0])
+    });
     return json(200, { ok: true });
   }
 
@@ -70,9 +111,6 @@ exports.handler = async (event) => {
   const role = truncate(payload.role, 50).trim();
   const comments = truncate(payload.comments, 2000).trim();
   const consent = payload.consent === true;
-  const consentText = truncate(payload.consentText, 400);
-  const pageUri = truncate(payload.pageUri, 400) || 'https://lingolinq.com/';
-  const pageName = truncate(payload.pageName, 200) || 'LingoLinq Beta Signup';
 
   if (!isValidEmail(email)) {
     return json(400, { error: 'Please enter a valid email address.' });
@@ -89,11 +127,27 @@ exports.handler = async (event) => {
 
   if (!portalId || !formGuid) {
     console.error('[beta-signup] missing HUBSPOT_PORTAL_ID or HUBSPOT_FORM_GUID');
-    return json(500, { error: 'Signup is temporarily unavailable. Please email info@lingolinq.com.' });
+    return json(500, {
+      error: 'Signup is temporarily unavailable. Please email info@lingolinq.com.'
+    });
   }
 
-  const ip = (event.headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined;
-  const userAgent = event.headers['user-agent'] || undefined;
+  // Synthesize pageUri / pageName server-side. Client-sent values are
+  // ignored because they are user-tampered and feed into HubSpot CRM views.
+  const refererHeader = headers.referer || headers.referrer || '';
+  let pageUri = 'https://lingolinq.com/';
+  try {
+    if (refererHeader) {
+      const ref = new URL(refererHeader);
+      if (ref.protocol === 'https:' && ref.host.endsWith('lingolinq.com')) {
+        pageUri = ref.origin + ref.pathname;
+      }
+    }
+  } catch {
+    // fall through to default
+  }
+  const pageName = 'LingoLinq Beta Waitlist';
+  const userAgent = sanitizeLine(headers['user-agent'] || 'lingolinq-landing');
 
   const hubspotPayload = {
     fields: [
@@ -105,69 +159,77 @@ exports.handler = async (event) => {
     ].filter((f) => f.value !== ''),
     context: {
       pageUri,
-      pageName,
-      ipAddress: ip
+      pageName
     },
     legalConsentOptions: {
       consent: {
         consentToProcess: true,
-        text:
-          consentText ||
-          "I agree to receive emails about LingoLinq's beta program and consent to processing.",
+        text: CONSENT_TEXT_CANONICAL,
         communications: [
           {
             value: true,
             subscriptionTypeId: Number(process.env.HUBSPOT_SUBSCRIPTION_TYPE_ID) || 999,
-            text: 'Marketing communications about the LingoLinq beta program.'
+            text: SUBSCRIPTION_PURPOSE_TEXT
           }
         ]
       }
     }
   };
 
+  const emailFp = fingerprint(email);
+
   let hubspotOk = false;
-  let hubspotError = null;
+  let hubspotErrorTag = null;
   try {
     const url = `https://api.hsforms.com/submissions/v3/integration/submit/${encodeURIComponent(portalId)}/${encodeURIComponent(formGuid)}`;
     const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': userAgent || 'lingolinq-landing'
+        'User-Agent': 'lingolinq-landing/1.0'
       },
       body: JSON.stringify(hubspotPayload)
     });
     if (res.ok) {
       hubspotOk = true;
     } else {
-      const detail = await res.text().catch(() => '');
-      hubspotError = `HubSpot ${res.status}: ${detail.slice(0, 500)}`;
-      console.error('[beta-signup]', hubspotError);
+      // Redacted log: status only, never the response body, because HubSpot
+      // echoes submitted fields in error payloads.
+      hubspotErrorTag = `status=${res.status}`;
+      console.error('[beta-signup] hubspot reject', { emailFp, role, status: res.status });
     }
   } catch (err) {
-    hubspotError = `HubSpot fetch failed: ${err && err.message ? err.message : String(err)}`;
-    console.error('[beta-signup]', hubspotError);
+    hubspotErrorTag = 'fetch_failed';
+    console.error('[beta-signup] hubspot fetch failed', { emailFp, role, code: err && err.code });
   }
 
-  // Backup email — best effort. Never blocks success on its own.
+  // Backup email. Best effort. Never blocks success on its own.
   const resendKey = process.env.RESEND_API_KEY;
   const forwardFrom = process.env.FORWARDER_FROM_EMAIL;
   const forwardTo = process.env.FORWARDER_TO_EMAIL;
 
   if (resendKey && forwardFrom && forwardTo) {
     try {
-      const subject = `New beta signup: ${role} (${email})`;
+      const safeEmail = sanitizeLine(email);
+      const safeRole = sanitizeLine(role);
+      const safeFirstname = sanitizeLine(firstname);
+      const safeOrg = sanitizeLine(organization);
+      const safeComments = sanitizeBody(comments);
+      const safeUA = sanitizeLine(userAgent).slice(0, 200);
+
+      const subject = `New beta signup: ${safeRole} (${safeEmail})`;
       const text = [
-        `Email: ${email}`,
-        `First name: ${firstname || '(none)'}`,
-        `Role: ${role}`,
-        `Organization: ${organization || '(none)'}`,
-        `Comments: ${comments || '(none)'}`,
+        `Email: ${safeEmail}`,
+        `First name: ${safeFirstname || '(none)'}`,
+        `Role: ${safeRole}`,
+        `Organization: ${safeOrg || '(none)'}`,
+        `Comments: ${safeComments || '(none)'}`,
         '',
-        `IP: ${ip || '(unknown)'}`,
-        `User-Agent: ${userAgent || '(unknown)'}`,
+        `User-Agent: ${safeUA}`,
         `Page: ${pageUri}`,
-        `HubSpot: ${hubspotOk ? 'OK' : 'FAILED. ' + (hubspotError || 'unknown')}`
+        `HubSpot: ${hubspotOk ? 'OK' : 'FAILED. ' + (hubspotErrorTag || 'unknown')}`,
+        '',
+        'This message was sent by the lingolinq.com beta signup form.'
       ].join('\n');
 
       const res = await fetch('https://api.resend.com/emails', {
@@ -184,19 +246,19 @@ exports.handler = async (event) => {
         })
       });
       if (!res.ok) {
-        const detail = await res.text().catch(() => '');
-        console.error('[beta-signup] forwarder email failed', res.status, detail.slice(0, 500));
+        console.error('[beta-signup] forwarder email failed', { emailFp, status: res.status });
       }
     } catch (err) {
-      console.error('[beta-signup] forwarder email threw', err && err.message);
+      console.error('[beta-signup] forwarder email threw', { emailFp, code: err && err.code });
     }
   } else {
-    console.warn('[beta-signup] backup email not configured — RESEND_API_KEY/FORWARDER_* missing');
+    console.warn('[beta-signup] backup email not configured. RESEND_API_KEY/FORWARDER_* missing');
   }
 
   if (!hubspotOk) {
     return json(502, {
-      error: 'We could not save your signup right now. Please email info@lingolinq.com so we can add you by hand.'
+      error:
+        'We could not save your signup right now. Please email info@lingolinq.com so we can add you by hand.'
     });
   }
 

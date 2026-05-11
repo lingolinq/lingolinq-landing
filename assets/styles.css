@@ -385,9 +385,8 @@ section {
 .field .opt {
   color: var(--charcoal);
   font-weight: 400;
-  font-size: 13px;
+  font-size: 14px;
   margin-left: 6px;
-  opacity: 0.7;
 }
 
 .field .req {
@@ -415,9 +414,9 @@ section {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: none;
   border-color: var(--periwinkle);
-  box-shadow: 0 0 0 3px rgba(120, 134, 243, 0.25);
+  outline: 3px solid var(--periwinkle);
+  outline-offset: 1px;
 }
 
 .field input[aria-invalid="true"],
@@ -458,6 +457,16 @@ section {
 
 #beta-submit { justify-self: stretch; margin-top: 8px; }
 
+.art13-note {
+  font-size: 13px;
+  color: var(--charcoal);
+  background: var(--off-white);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  line-height: 1.5;
+}
+.art13-note a { color: var(--cornflower); }
+
 .form-status {
   min-height: 22px;
   font-size: 15px;
@@ -465,6 +474,17 @@ section {
 }
 .form-status.success { color: var(--teal); font-weight: 600; }
 .form-status.error { color: var(--red); font-weight: 600; }
+
+/* Privacy / long-form docs
+   ------------------------------------------------------------- */
+.doc { max-width: 760px; margin: 0 auto; padding: 0 var(--pad-x); }
+.doc h1 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 24px; }
+.doc h2 { font-size: 22px; margin: 32px 0 12px; }
+.doc p, .doc li { font-size: 17px; max-width: none; }
+.doc ul { padding-left: 22px; display: grid; gap: 8px; }
+.doc .meta { color: var(--charcoal); font-size: 15px; margin-bottom: 32px; }
+.doc a { color: var(--cornflower); }
+section.doc-section { padding: clamp(48px, 8vw, 80px) 0; }
 
 /* Footer
    ------------------------------------------------------------- */
