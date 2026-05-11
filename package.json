@@ -1,0 +1,17 @@
+{
+  "name": "lingolinq-landing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LingoLinq marketing landing page and beta signup form. Static HTML + Netlify Function.",
+  "license": "MIT",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "dev": "netlify dev",
+    "preview": "netlify dev",
+    "build": "echo 'Static site, nothing to build.'",
+    "deploy:preview": "netlify deploy",
+    "deploy:prod": "netlify deploy --prod"
+  }
+}
