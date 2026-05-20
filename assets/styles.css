@@ -394,6 +394,19 @@ section {
   font-size: 16px;
   color: var(--charcoal);
   line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.question-block p:last-child {
+  margin-bottom: 0;
+}
+
+.question-block .question-closer {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--deep-purple);
+  font-size: 17px;
+  margin-top: 8px;
 }
 
 @media (max-width: 600px) {
@@ -527,6 +540,16 @@ section {
   margin-left: 6px;
 }
 
+.field-hint {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--charcoal);
+  opacity: 0.85;
+  line-height: 1.45;
+  margin-top: -2px;
+}
+
 .field .req {
   color: var(--red);
   margin-left: 2px;
@@ -595,13 +618,24 @@ section {
 
 #beta-submit { justify-self: stretch; margin-top: 8px; }
 
-.art13-note {
-  font-size: 13px;
+.no-spam-note {
+  font-size: 14px;
   color: var(--charcoal);
-  background: var(--off-white);
-  padding: 12px 14px;
+  opacity: 0.85;
+  text-align: center;
+  margin-top: -4px;
+}
+
+.art13-note {
+  display: block;
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--charcoal);
+  opacity: 0.85;
+  background: var(--light-gray);
+  padding: 14px 18px;
   border-radius: var(--radius-sm);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .art13-note a { color: var(--cornflower); }
 

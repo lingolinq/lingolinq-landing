@@ -49,7 +49,7 @@
         <div class="hero-copy">
           <h1 id="hero-title">AAC could be different. Imagine with us.</h1>
           <p class="lede">
-            97 million people worldwide could benefit from AAC. Far fewer than 5 million actually use it. Language tools have changed every few months for two years. AAC has been mostly the same for five. We are starting LingoLinq in that gap, and we want company while we figure out what comes next.
+            97 million people worldwide could benefit from AAC. Far fewer than 5 million actually use it. We are starting LingoLinq in that gap, and we want company while we figure out what comes next.
           </p>
           <a href="#beta" class="btn btn-primary">Imagine with us</a>
         </div>
@@ -164,11 +164,17 @@
         <p class="section-sub">These are real questions we are working through. We have principles. We do not have every answer, and we would rather build with people in the room than guess.</p>
         <div class="question-block">
           <h3>How do we see a student's progress without watching every word they say?</h3>
-          <p>A kid who stalls in October should be found in November, not in May at the IEP. That argues for visibility. The same kid deserves a communication system that is not also a surveillance system. That argues for restraint. Most of the AAC field has picked one of those two and lived with the trade. We think there is a more honest answer in the middle, and we want to find it with the people the answer is for.</p>
+          <p>A kid who stalls in October should be found in November, not in May at the IEP. That argues for visibility.</p>
+          <p>The same kid deserves a system that is not also surveillance. That argues for restraint.</p>
+          <p>Most of the field has picked one and lived with the trade. We think there is a more honest answer in the middle.</p>
+          <p class="question-closer">Help us find it.</p>
         </div>
         <div class="question-block">
-          <h3>What does AI-generated language look like in a classroom without crossing the line into words the student did not actually say?</h3>
-          <p>A teacher who needs a vocabulary set for Monday's lesson on the solar system, by Sunday night, is the realistic case. So is a student who reaches for a word that was suggested but was not theirs. Both can be true on the same screen. We are looking for the review process, the consent model, and the visual cues that let a generated board be useful in a real classroom and still keep the student's voice the student's voice.</p>
+          <h3>Where is the line for AI-generated language in a classroom?</h3>
+          <p>A teacher needs a vocabulary set for Monday's solar-system lesson by Sunday night. Real case.</p>
+          <p>A student reaches for a word the system suggested but did not mean. Also real.</p>
+          <p>Both can be true on the same screen. We are looking for the review process, the consent model, and the visual cues that let a generated board be useful and still keep the student's voice the student's voice.</p>
+          <p class="question-closer">Help us design it.</p>
         </div>
       </div>
     </section>
@@ -210,7 +216,7 @@
       <div class="beta-inner">
         <h2 id="beta-title" class="section-title">Come imagine with us.</h2>
         <p class="section-sub">
-          If any of those questions kept your attention, we would love to hear from you. We need AAC users, families, SLPs, educators, and administrators in this conversation. The first beta cohort will be small, and shaped by the people in it. We will send a short note when we are ready for testers, plus the occasional update along the way. No spam, ever. If you are signing up on behalf of an AAC user under 18, please choose <em>Parent or family member</em>.
+          If any of those questions kept your attention, we would love to hear from you. The first beta cohort will be small, and shaped by the people in it.
         </p>
 
         <form id="beta-form" class="beta-form" novalidate>
@@ -226,7 +232,8 @@
 
           <div class="field">
             <label for="role">Role <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
-            <select id="role" name="role" required aria-required="true">
+            <small class="field-hint" id="role-hint">Choose "Parent or family member" if you are signing up on behalf of an AAC user under 18.</small>
+            <select id="role" name="role" required aria-required="true" aria-describedby="role-hint">
               <option value="">Choose one</option>
               <option value="aac_user">AAC user (18 or older)</option>
               <option value="parent_family">Parent or family member</option>
@@ -255,10 +262,6 @@
             </label>
           </div>
 
-          <p class="art13-note">
-            LingoLinq is based in the United States. Your information will be stored in HubSpot, Netlify, Resend, and Google Workspace, all US-based, and kept for up to 24 months unless you ask us to delete it. <a href="/privacy.html#international-transfers">Details on transfers and your rights</a>.
-          </p>
-
           <div class="field field-hp" aria-hidden="true">
             <label for="website">Website</label>
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
@@ -266,8 +269,14 @@
 
           <button type="submit" class="btn btn-primary" id="beta-submit">Join the waitlist</button>
 
+          <p class="no-spam-note"><em>We will only email you about the beta. No spam, ever.</em></p>
+
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
+
+        <aside class="art13-note" aria-label="Data handling details">
+          LingoLinq is based in the United States. Your information will be stored in HubSpot, Netlify, Resend, and Google Workspace, all US-based, and kept for up to 24 months unless you ask us to delete it. <a href="/privacy.html#international-transfers">Details on transfers and your rights</a>.
+        </aside>
       </div>
     </section>
   </main>
