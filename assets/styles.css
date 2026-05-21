@@ -271,6 +271,23 @@ section {
   justify-content: center;
 }
 
+.audience-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--purple-light);
+  border-radius: 12px;
+  align-self: flex-start;
+}
+
+.audience-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
 .audience-tag {
   display: inline-block;
   align-self: flex-start;
@@ -318,6 +335,24 @@ section {
 .amber-callout p {
   font-size: 17px;
   color: var(--charcoal);
+}
+
+.amber-callout .speed-chart {
+  margin: 8px 0 24px;
+  background: var(--white);
+  border: 1px solid #F0E5C4;
+  border-radius: var(--radius-sm);
+  padding: 18px 18px 10px;
+}
+
+.amber-callout .speed-chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .amber-callout .speed-chart { padding: 12px 8px 6px; }
 }
 
 /* What could be possible - outcome imagination cards
@@ -476,27 +511,79 @@ section {
   .founder-copy p { margin: 0 auto; }
 }
 
-/* Trust
+/* AAC where you already are - open source / multi-platform
    ------------------------------------------------------------- */
-.trust { background: var(--off-white); }
+.open-everywhere {
+  background: var(--off-white);
+}
 
-.trust-list {
-  max-width: 720px;
+.open-everywhere-grid {
+  max-width: var(--max-w);
   margin: 0 auto;
-  list-style: none;
   display: grid;
-  gap: 14px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
 }
 
-.trust-list li {
-  background: var(--white);
-  border: 1px solid var(--light-gray);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  font-size: 16px;
+.open-everywhere-copy .section-title {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
 }
 
-.trust-list strong { color: var(--deep-purple); font-weight: 700; }
+.open-everywhere-copy .section-sub {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 24px;
+  max-width: none;
+  font-weight: 600;
+  color: var(--deep-purple);
+}
+
+.open-everywhere-copy p {
+  font-size: 17px;
+  color: var(--charcoal);
+  max-width: 58ch;
+  margin-bottom: 16px;
+  line-height: 1.55;
+}
+
+.open-everywhere-copy .github-anchor {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--deep-purple);
+  margin-top: 8px;
+}
+
+.open-everywhere-copy .github-anchor a {
+  color: var(--deep-purple);
+  text-decoration-thickness: 2px;
+}
+
+.open-everywhere-copy .pre-launch-note {
+  margin-top: 16px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.open-everywhere-art svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .open-everywhere-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .open-everywhere-art { max-width: 360px; margin: 0 auto; }
+}
 
 /* Beta form
    ------------------------------------------------------------- */
