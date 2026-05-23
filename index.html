@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LingoLinq | AAC could be different. Imagine with us.</title>
-  <meta name="description" content="A new open-source AAC project, pre-launch. We are looking for AAC users, families, SLPs, and administrators to help us think through what comes next." />
+  <title>LingoLinq | Heard in real time. Hours back in the day.</title>
+  <meta name="description" content="Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Open source, privacy-first. Help us build the AAC app you wish existed." />
   <meta name="theme-color" content="#22215A" />
 
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
@@ -12,13 +12,13 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lingolinq.com/" />
-  <meta property="og:title" content="LingoLinq | AAC could be different. Imagine with us." />
-  <meta property="og:description" content="A new open-source AAC project, pre-launch. Come imagine what AAC could become." />
+  <meta property="og:title" content="LingoLinq | Heard in real time. Hours back in the day." />
+  <meta property="og:description" content="Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Open source. Pre-launch beta." />
   <meta property="og:image" content="https://lingolinq.com/assets/LL_Stack_Bright.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LingoLinq | AAC could be different. Imagine with us." />
-  <meta name="twitter:description" content="A new open-source AAC project, pre-launch. Come imagine what AAC could become." />
+  <meta name="twitter:title" content="LingoLinq | Heard in real time. Hours back in the day." />
+  <meta name="twitter:description" content="Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Open source. Pre-launch beta." />
   <meta name="twitter:image" content="https://lingolinq.com/assets/LL_Stack_Bright.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,9 +36,7 @@
       <img src="/assets/LL_Line_Bright.png" alt="LingoLinq" width="180" height="44" />
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="#why">Why now</a>
-      <a href="#founder">Who</a>
-      <a class="nav-cta" href="#beta">Imagine with us</a>
+      <a class="nav-cta" href="#beta-form">Join the beta</a>
     </nav>
   </header>
 
@@ -47,18 +45,58 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1 id="hero-title">AAC could be different. Imagine with us.</h1>
+          <h1 id="hero-title">Heard in real time. Hours back in the day. Built with you.</h1>
           <p class="lede">
-            97 million people worldwide could benefit from AAC. Far fewer than 5 million actually use it. We are starting LingoLinq in that gap, and we want company while we figure out what comes next.
+            Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Help us build it.
           </p>
-          <a href="#beta" class="btn btn-primary">Imagine with us</a>
+
+          <form id="beta-form" class="beta-form beta-form-hero" novalidate aria-label="Join the beta">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="you@example.com" />
+            </div>
+
+            <div class="field">
+              <label for="role">I am a</label>
+              <select id="role" name="role" required aria-required="true">
+                <option value="">Choose one</option>
+                <option value="aac_user">AAC user (18 or older)</option>
+                <option value="parent_family">Parent or family member</option>
+                <option value="slp">Speech-language pathologist</option>
+                <option value="educator">Educator or aide</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="field field-checkbox">
+              <input type="checkbox" id="consent" name="consent" required aria-required="true" />
+              <label for="consent">
+                I am 18 or older. I agree to LingoLinq sending me beta updates. We never sell your data. <a href="/privacy.html">Privacy notice</a>.
+              </label>
+            </div>
+
+            <div class="field field-hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="beta-submit">Join the beta</button>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <p class="no-spam-note">No spam. Beta updates only.</p>
+          </form>
         </div>
+
         <div class="hero-art" aria-hidden="true">
           <svg viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg" focusable="false">
             <defs>
               <filter id="wobble" x="-5%" y="-5%" width="110%" height="110%">
                 <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" />
                 <feDisplacementMap in="SourceGraphic" scale="3" />
+              </filter>
+              <filter id="wobble2" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="5" />
+                <feDisplacementMap in="SourceGraphic" scale="2.5" />
               </filter>
             </defs>
             <g filter="url(#wobble)">
@@ -73,225 +111,95 @@
               <path d="M210 250 Q245 235 280 250 T350 250 T415 245" fill="none" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
               <path d="M210 285 Q245 270 280 285 T350 285" fill="none" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
             </g>
-            <path d="M320 60 Q345 45 365 65" fill="none" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
-            <path d="M348 38 L365 65 L342 60" fill="none" stroke="#22215A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+          <p class="hero-art-caption">Two people. One conversation.</p>
         </div>
       </div>
     </section>
 
-    <section class="value" aria-labelledby="value-title">
-      <h2 id="value-title" class="section-title">What keeps you up at night?</h2>
-      <p class="section-sub">AAC users, families, SLPs, and administrators each carry a different weight. We want to hear which of these sounds like yours.</p>
-      <div class="cards cards-5">
-        <article class="card">
+    <section class="persona-split" aria-labelledby="persona-split-title">
+      <h2 id="persona-split-title" class="section-title">What changes.</h2>
+      <p class="section-sub">Pick the one that sounds like you.</p>
+
+      <div class="persona-cards">
+        <article class="persona-card persona-card-aac" aria-labelledby="persona-aac-title">
+          <div class="persona-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <g filter="url(#wobble2)">
+                <path d="M10 16 Q10 10 16 10 L48 10 Q54 10 54 16 L54 38 Q54 44 48 44 L28 44 L18 54 L20 44 L16 44 Q10 44 10 38 Z"
+                      fill="#EEEDFE" stroke="#22215A" stroke-width="3" stroke-linejoin="round" />
+                <circle cx="22" cy="27" r="3" fill="#22215A" />
+                <circle cx="32" cy="27" r="3" fill="#22215A" />
+                <circle cx="42" cy="27" r="3" fill="#22215A" />
+              </g>
+            </svg>
+          </div>
           <span class="audience-tag">For AAC users</span>
-          <h3>What if my AAC could keep up with what I want to say?</h3>
-          <p>12 to 15 words a minute is not the speed of a conversation. It is not the speed anyone wants to live at.</p>
-        </article>
-        <article class="card">
-          <span class="audience-tag">For families</span>
-          <h3>What if I could model without disappearing into menus?</h3>
-          <p>The fastest way to leave a moment with your child is to dig three pages deep for a word.</p>
-        </article>
-        <article class="card">
-          <span class="audience-tag">For school SLPs</span>
-          <h3>What if a 30-student caseload did not mean 30 quarterly rebuilds?</h3>
-          <p>Every kid grows. The pages should grow with them, not wait on your Saturday.</p>
-        </article>
-        <article class="card">
-          <span class="audience-tag">For clinical and hospital SLPs</span>
-          <h3>What if a patient's vocabulary moved with them?</h3>
-          <p>Discharge should not erase the language that took six months of sessions to build.</p>
-        </article>
-        <article class="card">
-          <span class="audience-tag">For administrators</span>
-          <h3>What if I had a privacy story I could defend?</h3>
-          <p>Modern language tools and student or patient data do not have to be in opposition.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="why" id="why" aria-labelledby="why-title">
-      <div class="why-inner">
-        <div class="amber-callout">
-          <h2 id="why-title">Why now.</h2>
+          <h3 id="persona-aac-title">Your words, at your pace.</h3>
           <p>
-            AAC communicators average 12 to 15 words a minute. Speakers average 125 to 150. Cost, learning curve, and limited language depth are the rest of the gap. Language tools have changed faster than AAC ever has. We think there is a window to do something about it, with the people who live with AAC every day in the room while it gets built.
+            Modern language tools that learn how you communicate, not how an algorithm thinks you should. Predictions feel like yours. Modeling happens with you, not at you.
           </p>
-        </div>
-      </div>
-    </section>
+          <p>
+            Your communication stays yours. We never train on it without an explicit yes from you.
+          </p>
+        </article>
 
-    <section class="possible" aria-labelledby="possible-title">
-      <h2 id="possible-title" class="section-title">What could be possible.</h2>
-      <p class="section-sub">If language tools moved as fast as language itself, here is what some of the people who live with AAC might notice.</p>
-      <div class="cards cards-4">
-        <article class="card">
-          <span class="audience-tag">For an AAC user</span>
-          <p>Imagine if the next word was usually the one you were already reaching for, so a sentence felt like a sentence and not a search.</p>
-        </article>
-        <article class="card">
-          <span class="audience-tag">For a family member</span>
-          <p>Imagine if you could be present with your kid in a conversation, instead of disappearing into menus while the moment passes.</p>
-        </article>
-        <article class="card">
-          <span class="audience-tag">For a school SLP</span>
-          <p>Imagine if you spent more of your week with the students on your caseload, and less of it reconstructing what happened in the room from someone else's notes.</p>
-        </article>
-        <article class="card">
-          <span class="audience-tag">For a district administrator</span>
-          <p>Imagine if "is every kid we are responsible for actually being heard" was a question you could answer with evidence, not a hope you carry into board meetings.</p>
+        <article class="persona-card persona-card-slp" aria-labelledby="persona-slp-title">
+          <div class="persona-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <g filter="url(#wobble2)">
+                <rect x="14" y="8" width="36" height="48" rx="3"
+                      fill="#EEEDFE" stroke="#22215A" stroke-width="3" />
+                <path d="M22 22 L42 22" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
+                <path d="M22 32 L42 32" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
+                <path d="M22 42 L34 42" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
+                <path d="M40 42 L44 47 L52 38" fill="none" stroke="#22215A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </svg>
+          </div>
+          <span class="audience-tag">For SLPs</span>
+          <h3 id="persona-slp-title">Your time, back.</h3>
+          <p class="stat-callout">
+            An 18-month-old hears about <strong>4,380 hours</strong> of language before they say their first word.
+          </p>
+          <p class="stat-callout">
+            At 20 to 30 minutes of modeling twice a week, an AAC user reaches the same exposure in <strong>84 years</strong>.
+          </p>
+          <p>
+            We are building tools that close the gap, auto-draft the documentation, and put the hours you lost to paperwork back where they belong: with the students on your caseload.
+          </p>
         </article>
       </div>
     </section>
 
     <section class="privacy-stance" aria-labelledby="privacy-stance-title">
       <div class="privacy-inner">
-        <h2 id="privacy-stance-title" class="section-title">Privacy is the line.</h2>
-        <p>
-          Ethical AI in AAC means no training on user communication, no sale of vocabulary patterns, and no quiet data harvesting. The hard question is how to use modern language tools to remove the speed, cost, and learning-curve barriers in AAC without crossing that line.
-        </p>
-        <p>
-          We do not have every answer yet. We have principles, and we are looking for AAC users, SLPs, families, and administrators to help us find the rest.
-        </p>
+        <h2 id="privacy-stance-title" class="section-title">Your communication belongs to you.</h2>
+        <ul class="privacy-list">
+          <li><strong>We do not sell your data.</strong> Not now. Not ever.</li>
+          <li><strong>No training on your communication without an explicit yes.</strong> Opt in, opt out, on your terms.</li>
+          <li><strong>Optional anonymized data</strong> helps make predictions better for the whole AAC community. You decide.</li>
+          <li><strong>Open source.</strong> The roadmap and the code live on <a href="https://github.com/lingolinq/LingoLinq-AAC" target="_blank" rel="noopener noreferrer">GitHub</a>.</li>
+        </ul>
       </div>
     </section>
 
-    <section class="open-questions" aria-labelledby="open-questions-title">
-      <div class="open-questions-inner">
-        <h2 id="open-questions-title" class="section-title">Help us figure this out.</h2>
-        <p class="section-sub">These are real questions we are working through. We have principles. We do not have every answer, and we would rather build with people in the room than guess.</p>
-        <div class="question-block">
-          <h3>How do we see a student's progress without watching every word they say?</h3>
-          <p>A kid who stalls in October should be found in November, not in May at the IEP. That argues for visibility.</p>
-          <p>The same kid deserves a system that is not also surveillance. That argues for restraint.</p>
-          <p>Most of the field has picked one and lived with the trade. We think there is a more honest answer in the middle.</p>
-          <p class="question-closer">Help us find it.</p>
-        </div>
-        <div class="question-block">
-          <h3>Where is the line for AI-generated language in a classroom?</h3>
-          <p>A teacher needs a vocabulary set for Monday's solar-system lesson by Sunday night. Real case.</p>
-          <p>A student reaches for a word the system suggested but did not mean. Also real.</p>
-          <p>Both can be true on the same screen. We are looking for the review process, the consent model, and the visual cues that let a generated board be useful and still keep the student's voice the student's voice.</p>
-          <p class="question-closer">Help us design it.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="founder" id="founder" aria-labelledby="founder-title">
-      <div class="founder-grid">
-        <div class="founder-art" aria-hidden="true">
-          <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" focusable="false">
-            <circle cx="110" cy="110" r="92" fill="#EEEDFE" stroke="#22215A" stroke-width="3" />
-            <path d="M70 130 Q110 175 150 130" fill="none" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
-            <circle cx="90" cy="100" r="5" fill="#22215A" />
-            <circle cx="130" cy="100" r="5" fill="#22215A" />
-            <path d="M65 78 Q75 64 90 70" fill="none" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
-            <path d="M130 70 Q145 64 155 78" fill="none" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
-          </svg>
-        </div>
-        <div class="founder-copy">
-          <h2 id="founder-title" class="section-title">Who is asking.</h2>
-          <p>
-            Hi, I am Scot. I have spent eight years in the AAC industry, and I am the parent of an AAC user. LingoLinq is the project I wished existed when my child started communicating. Open source. Independent. Built alongside the people who use it.
-          </p>
-          <p class="signature">Scot Wahlquist, Founder</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="trust" aria-labelledby="trust-title">
-      <h2 id="trust-title" class="section-title">What we will not promise.</h2>
-      <p class="section-sub">LingoLinq is pre-launch. We will say plainly what is real and what is roadmap.</p>
-      <ul class="trust-list">
-        <li><strong>A finished product.</strong> We are pre-launch and we will keep saying so until that changes.</li>
-        <li><strong>Compliance certifications.</strong> We are designing toward FERPA, HIPAA, and GDPR. We have not been audited.</li>
-        <li><strong>Specific AI features.</strong> We are exploring what ethical AI can do for AAC. We will say what is real when it is real.</li>
-        <li><strong>Open source.</strong> The source and roadmap live on <a href="https://github.com/lingolinq/LingoLinq-AAC" target="_blank" rel="noopener noreferrer">GitHub</a>.</li>
-      </ul>
-    </section>
-
-    <section class="beta" id="beta" aria-labelledby="beta-title">
-      <div class="beta-inner">
-        <h2 id="beta-title" class="section-title">Come imagine with us.</h2>
-        <p class="section-sub">
-          If any of those questions kept your attention, we would love to hear from you. The first beta cohort will be small, and shaped by the people in it.
-        </p>
-
-        <form id="beta-form" class="beta-form" novalidate>
-          <div class="field">
-            <label for="email">Email <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" />
-          </div>
-
-          <div class="field">
-            <label for="firstname">First name <span class="opt">optional</span></label>
-            <input type="text" id="firstname" name="firstname" autocomplete="given-name" />
-          </div>
-
-          <div class="field">
-            <label for="role">Role <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> required</span></label>
-            <small class="field-hint" id="role-hint">Choose "Parent or family member" if you are signing up on behalf of an AAC user under 18.</small>
-            <select id="role" name="role" required aria-required="true" aria-describedby="role-hint">
-              <option value="">Choose one</option>
-              <option value="aac_user">AAC user (18 or older)</option>
-              <option value="parent_family">Parent or family member</option>
-              <option value="slp">Speech-language pathologist</option>
-              <option value="educator">Educator</option>
-              <option value="district_admin">District administrator</option>
-              <option value="clinician">Clinician</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="organization">Organization <span class="opt">optional</span></label>
-            <input type="text" id="organization" name="organization" autocomplete="organization" />
-          </div>
-
-          <div class="field">
-            <label for="comments">Anything you want us to know? <span class="opt">optional</span></label>
-            <textarea id="comments" name="comments" rows="4" maxlength="2000"></textarea>
-          </div>
-
-          <div class="field field-checkbox">
-            <input type="checkbox" id="consent" name="consent" required aria-required="true" />
-            <label for="consent">
-              I am 18 or older. I agree to LingoLinq processing my information and sending me waitlist updates. I can withdraw at any time. We do not sell or share your information. See our <a href="/privacy.html">privacy notice</a>.
-            </label>
-          </div>
-
-          <div class="field field-hp" aria-hidden="true">
-            <label for="website">Website</label>
-            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-          </div>
-
-          <button type="submit" class="btn btn-primary" id="beta-submit">Join the waitlist</button>
-
-          <p class="no-spam-note"><em>We will only email you about the beta. No spam, ever.</em></p>
-
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
-
-        <aside class="art13-note" aria-label="Data handling details">
-          LingoLinq is based in the United States. Your information will be stored in HubSpot, Netlify, Resend, and Google Workspace, all US-based, and kept for up to 24 months unless you ask us to delete it. <a href="/privacy.html#international-transfers">Details on transfers and your rights</a>.
-        </aside>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-left">
+  <footer class="compliance-band" role="contentinfo">
+    <div class="compliance-inner">
+      <p class="compliance-statement">
+        Pre-launch. Designing toward FERPA, HIPAA, and GDPR. We will say plainly when that changes.
+      </p>
+      <div class="footer-meta">
         <img src="/assets/LL_Line_Bright.png" alt="LingoLinq" width="140" height="34" />
-        <p>&copy; 2026 LingoLinq. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="mailto:info@lingolinq.com">info@lingolinq.com</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="https://github.com/lingolinq/LingoLinq-AAC" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+        <p class="copyright">&copy; 2026 LingoLinq. All rights reserved.</p>
       </div>
-      <ul class="footer-links">
-        <li><a href="mailto:info@lingolinq.com">info@lingolinq.com</a></li>
-        <li><a href="/privacy.html">Privacy</a></li>
-        <li><a href="https://github.com/lingolinq/LingoLinq-AAC" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-      </ul>
     </div>
   </footer>
 
