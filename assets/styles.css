@@ -362,6 +362,31 @@ section {
   background: var(--white);
 }
 
+.privacy-promise {
+  background: var(--amber-light);
+  border: 1px solid var(--amber-gold);
+  border-left: 6px solid var(--amber-gold);
+  border-radius: var(--radius-md);
+  padding: 22px 28px;
+  max-width: 760px;
+  margin: 0 auto 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.privacy-promise-head {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(17px, 2vw, 20px);
+  color: var(--amber-dark);
+  margin-bottom: 8px;
+}
+
+.privacy-promise p {
+  color: var(--charcoal);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 .open-questions-list {
   list-style: none;
   max-width: 760px;
