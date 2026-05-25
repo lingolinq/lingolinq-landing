@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LingoLinq | Heard in real time. Hours back in the day.</title>
-  <meta name="description" content="Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Open source, privacy-first. Help us build the AAC app you wish existed." />
+  <title>LingoLinq | What should language tech do for AAC?</title>
+  <meta name="description" content="Your phone finishes your sentences. Your inbox writes its own replies. We're open-sourcing an AAC app and asking AAC users, SLPs, parents, and educators what this should do for AAC, without giving up your privacy. Join the beta." />
   <meta name="theme-color" content="#22215A" />
 
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
@@ -12,13 +12,13 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lingolinq.com/" />
-  <meta property="og:title" content="LingoLinq | Heard in real time. Hours back in the day." />
-  <meta property="og:description" content="Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Open source. Pre-launch beta." />
+  <meta property="og:title" content="LingoLinq | What should language tech do for AAC?" />
+  <meta property="og:description" content="Your phone finishes your sentences. Your inbox writes its own replies. We're open-sourcing an AAC app and asking what this should do for AAC, without giving up your privacy." />
   <meta property="og:image" content="https://lingolinq.com/assets/LL_Stack_Bright.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LingoLinq | Heard in real time. Hours back in the day." />
-  <meta name="twitter:description" content="Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Open source. Pre-launch beta." />
+  <meta name="twitter:title" content="LingoLinq | What should language tech do for AAC?" />
+  <meta name="twitter:description" content="Your phone finishes your sentences. Your inbox writes its own replies. We're open-sourcing an AAC app and asking what this should do for AAC, without giving up your privacy." />
   <meta name="twitter:image" content="https://lingolinq.com/assets/LL_Stack_Bright.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,9 +45,10 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1 id="hero-title">Heard in real time. Hours back in the day. Built with you.</h1>
+          <p class="hero-eyebrow">Your phone finishes your sentences. Your inbox writes its own replies.</p>
+          <h1 id="hero-title">What should this do for AAC, without giving up your privacy?</h1>
           <p class="lede">
-            Modern language tools that help AAC users keep up in real-time conversation, and give the team back the hours they lose to documentation. Help us build it.
+            We're open-sourcing an AAC app and inviting AAC users, SLPs, parents, and educators to trial it and help us figure out the answer. No locked roadmap. No selling your data. Just an honest invitation to shape what comes next.
           </p>
 
           <form id="beta-form" class="beta-form beta-form-hero" novalidate aria-label="Join the beta">
@@ -94,10 +95,6 @@
                 <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" />
                 <feDisplacementMap in="SourceGraphic" scale="3" />
               </filter>
-              <filter id="wobble2" x="-5%" y="-5%" width="110%" height="110%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="5" />
-                <feDisplacementMap in="SourceGraphic" scale="2.5" />
-              </filter>
             </defs>
             <g filter="url(#wobble)">
               <path d="M55 70 Q40 70 40 95 L40 195 Q40 220 65 220 L150 220 L150 252 L195 220 L290 220 Q315 220 315 195 L315 95 Q315 70 290 70 Z"
@@ -117,59 +114,24 @@
       </div>
     </section>
 
-    <section class="persona-split" aria-labelledby="persona-split-title">
-      <h2 id="persona-split-title" class="section-title">What changes.</h2>
-      <p class="section-sub">Pick the one that sounds like you.</p>
+    <section class="open-questions" aria-labelledby="open-questions-title">
+      <h2 id="open-questions-title" class="section-title">Open questions we're testing with you.</h2>
+      <p class="section-sub">Not a feature list. A starting point. Tell us what's missing.</p>
 
-      <div class="persona-cards">
-        <article class="persona-card persona-card-aac" aria-labelledby="persona-aac-title">
-          <div class="persona-icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false">
-              <g filter="url(#wobble2)">
-                <path d="M10 16 Q10 10 16 10 L48 10 Q54 10 54 16 L54 38 Q54 44 48 44 L28 44 L18 54 L20 44 L16 44 Q10 44 10 38 Z"
-                      fill="#EEEDFE" stroke="#22215A" stroke-width="3" stroke-linejoin="round" />
-                <circle cx="22" cy="27" r="3" fill="#22215A" />
-                <circle cx="32" cy="27" r="3" fill="#22215A" />
-                <circle cx="42" cy="27" r="3" fill="#22215A" />
-              </g>
-            </svg>
-          </div>
-          <span class="audience-tag">For AAC users</span>
-          <h3 id="persona-aac-title">Your words, at your pace.</h3>
-          <p>
-            Modern language tools that learn how you communicate, not how an algorithm thinks you should. Predictions feel like yours. Modeling happens with you, not at you.
-          </p>
-          <p>
-            Your communication stays yours. We never train on it without an explicit yes from you.
-          </p>
-        </article>
-
-        <article class="persona-card persona-card-slp" aria-labelledby="persona-slp-title">
-          <div class="persona-icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false">
-              <g filter="url(#wobble2)">
-                <rect x="14" y="8" width="36" height="48" rx="3"
-                      fill="#EEEDFE" stroke="#22215A" stroke-width="3" />
-                <path d="M22 22 L42 22" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
-                <path d="M22 32 L42 32" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
-                <path d="M22 42 L34 42" stroke="#22215A" stroke-width="3" stroke-linecap="round" />
-                <path d="M40 42 L44 47 L52 38" fill="none" stroke="#22215A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-              </g>
-            </svg>
-          </div>
-          <span class="audience-tag">For SLPs</span>
-          <h3 id="persona-slp-title">Your time, back.</h3>
-          <p class="stat-callout">
-            An 18-month-old hears about <strong>4,380 hours</strong> of language before they say their first word.
-          </p>
-          <p class="stat-callout">
-            At 20 to 30 minutes of modeling twice a week, an AAC user reaches the same exposure in <strong>84 years</strong>.
-          </p>
-          <p>
-            We are building tools that close the gap, auto-draft the documentation, and put the hours you lost to paperwork back where they belong: with the students on your caseload.
-          </p>
-        </article>
-      </div>
+      <ul class="open-questions-list">
+        <li>
+          <strong>Predictions that learn how you communicate,</strong> without your messages leaving your device unless you opt in.
+        </li>
+        <li>
+          <strong>Session notes that draft themselves,</strong> while student data stays inside FERPA and HIPAA boundaries.
+        </li>
+        <li>
+          <strong>Insight for SPED directors and clinical leads,</strong> without surveilling the people on a caseload.
+        </li>
+        <li>
+          <strong>Modeling support that fits your family's routine,</strong> without storing what's said at home.
+        </li>
+      </ul>
     </section>
 
     <section class="privacy-stance" aria-labelledby="privacy-stance-title">
