@@ -28,10 +28,7 @@
 
     const data = {
       email: form.email.value.trim(),
-      firstname: form.firstname.value.trim(),
       role: form.role.value,
-      organization: form.organization.value.trim(),
-      comments: form.comments.value.trim(),
       consent: form.consent.checked,
       website: form.website.value,
       consentText: form.querySelector('label[for="consent"]').textContent.trim(),
@@ -77,11 +74,11 @@
       const msg = body && body.error ? body.error : 'Something went wrong. Please try again, or email info@lingolinq.com.';
       setStatus(msg, 'error');
       submit.disabled = false;
-      submit.textContent = 'Join the waitlist';
+      submit.textContent = 'Join the beta';
     } catch (err) {
       setStatus('Something went wrong. Please try again, or email info@lingolinq.com.', 'error');
       submit.disabled = false;
-      submit.textContent = 'Join the waitlist';
+      submit.textContent = 'Join the beta';
     }
   });
 })();

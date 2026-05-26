@@ -20,9 +20,7 @@
       <img src="/assets/LL_Line_Bright.png" alt="LingoLinq" width="180" height="44" />
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/#why">Why now</a>
-      <a href="/#founder">About</a>
-      <a class="nav-cta" href="/#beta">Join the beta</a>
+      <a class="nav-cta" href="/#beta-form">Join the beta</a>
     </nav>
   </header>
 
@@ -30,7 +28,7 @@
     <section class="doc-section">
       <div class="doc">
         <h1>Privacy notice</h1>
-        <p class="meta">Last updated: 11 May 2026</p>
+        <p class="meta">Last updated: 25 May 2026</p>
 
         <p>
           This notice explains what information LingoLinq collects when you join the beta waitlist, how we use it, where it is stored, and the rights you have over it. It applies to the form on <a href="/">lingolinq.com</a> and the emails we send in response. It does not cover the LingoLinq AAC application itself, which has a separate notice published before any user data is collected.
@@ -39,10 +37,7 @@
         <h2>What we collect</h2>
         <ul>
           <li>Email address (required, so we can write back).</li>
-          <li>First name (optional).</li>
-          <li>Role (required), so we know whether you are an AAC user, family member, SLP, educator, district administrator, clinician, or something else.</li>
-          <li>Organization (optional).</li>
-          <li>Comments you choose to share (optional).</li>
+          <li>Role (required), so we know whether you are an AAC user, parent or family member, speech-language pathologist, educator or aide, or something else.</li>
           <li>IP address and browser user-agent, captured automatically by our hosting provider for anti-abuse purposes.</li>
         </ul>
 
@@ -115,28 +110,55 @@
           The waitlist form is intended for adults. If you are a parent or family member of an AAC user under 18, please sign up on behalf of yourself, not the child, and select the <em>Parent or family</em> role. We do not knowingly collect information from anyone under 13.
         </p>
 
+        <h2 id="anonymized-data">Anonymized data in the LingoLinq application</h2>
+        <p>
+          This notice covers the beta waitlist only. The LingoLinq AAC application itself will have a separate privacy notice published before any user data is collected. Because prospective districts, clinical teams, and families are evaluating us on how we will handle data in the application, the principles below describe what we are designing toward.
+        </p>
+        <p>
+          <strong>Everything is off by default.</strong> No communication content, modeling input, usage signal, or reporting data is collected, transmitted, or used for product improvement or research until the user (or an authorized supporter, in the case of a minor or supported user) explicitly opts in. The setting can be turned off at any time, and data tied to that account is deleted on request.
+        </p>
+        <p>
+          When data is shared under that opt-in, our design intent is:
+        </p>
+        <ul>
+          <li><strong>Direct identifiers are removed before storage or analysis.</strong> Names, email addresses, account IDs, IP addresses, device identifiers, and school or district identifiers are stripped.</li>
+          <li><strong>FERPA (US K-12 students).</strong> We will not use education records for product training without the written consent required by 34 CFR Part 99, and de-identification will meet the standard at 34 CFR &sect; 99.31(b).</li>
+          <li><strong>COPPA (users under 13).</strong> No data from users under 13 will be used for product training, anonymized or not, until verifiable parental consent has been received under the COPPA Rule.</li>
+          <li><strong>HIPAA (clinical settings).</strong> De-identification will follow the Safe Harbor method at 45 CFR &sect; 164.514(b)(2), removing the 18 specified identifiers.</li>
+          <li><strong>GDPR (EU and UK).</strong> Anonymization is intended to be irreversible. Where re-identification is theoretically possible, the data is treated as pseudonymized personal data and remains subject to your rights under GDPR.</li>
+        </ul>
+        <p>
+          Aggregated or statistical output produced from this data (for example, "X percent of beta users use predictive sentences") is not personal data and may be shared publicly. We will never publish or share output that could reasonably identify an individual.
+        </p>
+        <p>
+          When the application notice is published, this section will be replaced with a pointer to it. Until then, treat this as a binding statement of intent.
+        </p>
+
         <h2>Contact</h2>
         <p>
           Questions, requests, or complaints about this notice: <a href="mailto:info@lingolinq.com">info@lingolinq.com</a>.
         </p>
         <p>
-          <strong>Postal address:</strong> LingoLinq, c/o Scot Wahlquist, [postal address to be added before public launch].
+          <strong>Postal address:</strong> LingoLinq, c/o Dominic Dewitte, 5041 Taylor Ave, Ogden, UT 84405, USA.
         </p>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-left">
+  <footer class="compliance-band" role="contentinfo">
+    <div class="compliance-inner">
+      <p class="compliance-statement">
+        Pre-launch. Designing toward FERPA, HIPAA, and GDPR. We will say plainly when that changes.
+      </p>
+      <div class="footer-meta">
         <img src="/assets/LL_Line_Bright.png" alt="LingoLinq" width="140" height="34" />
-        <p>&copy; 2026 LingoLinq. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="mailto:info@lingolinq.com">info@lingolinq.com</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="https://github.com/lingolinq/LingoLinq-AAC" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+        <p class="copyright">&copy; 2026 LingoLinq. All rights reserved.</p>
       </div>
-      <ul class="footer-links">
-        <li><a href="mailto:info@lingolinq.com">info@lingolinq.com</a></li>
-        <li><a href="/privacy.html">Privacy</a></li>
-        <li><a href="https://github.com/lingolinq/LingoLinq-AAC" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-      </ul>
     </div>
   </footer>
 </body>
